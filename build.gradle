@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'org.lianglliu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.3'
+}
+
+test {
+    useJUnitPlatform()
+}
