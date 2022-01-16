@@ -1,5 +1,7 @@
 package com.lianglliu.rxjava.impl;
 
+import com.lianglliu.rxjava.impl.scheduler.Scheduler;
+
 /**
  * 被观察者核心抽象类，框架入口
  */
@@ -22,5 +24,13 @@ public abstract class Observable<T> implements ObservableSource<T> {
 
     public <U> ObservableFlatMap<T, U> flatMap(Function<T, ObservableSource<U>> function) {
         return new ObservableFlatMap<T, U>(this, function);
+    }
+
+    public ObservableSubscribeOn<T> subscribeOn(Scheduler scheduler) {
+        return new ObservableSubscribeOn<>(this, scheduler);
+    }
+
+    public ObservableObserverOn<T> observerOn(Scheduler scheduler) {
+        return new ObservableObserverOn<>(this, scheduler);
     }
 }
